@@ -1,11 +1,9 @@
 <?php
-$mysql_host = 'localhost';
-$mysql_user = 'root';
-$mysql_pass = '';
+   define('DB_SERVER', '127.0.0.1');
+   define('DB_USERNAME', 'root');
+   define('DB_PASSWORD', '');
+   define('DB_DATABASE', 'guestspot');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE)
+   OR die ('Cannot connect to Mysql database'.mysqli_connect_error());
 
-$mysql_db = 'guestspot';
-
-@mysqli_connect($mysql_host, $mysql_user, $mysql_pass);
-@mysqli_select_db($mysql_db);
-
-echo 'Ok!';
+?>

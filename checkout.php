@@ -1,3 +1,11 @@
+<?php
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +35,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -39,25 +47,34 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
       <hr class="sidebar-divider my-0">
        <!-- Nav Item - Register Guest -->
       <li class="nav-item active">
-        <a class="nav-link" href="register.html">
+        <a class="nav-link" href="register.php">
           <i class="fas fa-registered"></i>
           <span>Register Guest</span></a>
       </li>
       <hr class="sidebar-divider my-0">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
-        <a class="nav-link" href="report.html">
+        <a class="nav-link" href="report.php">
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
       </li>
       <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Guest Check Out -->
+      <li class="nav-item active">
+        <a class="nav-link" href="checkout.php">
+          <i class="fas fa-flag-checkered"></i>
+          <span>Guest Check Out</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -90,7 +107,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="image/pp.jpeg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -106,91 +123,88 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
+       <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Current Visitors -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Current Visitors</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <h1 class="h3 mb-2 text-gray-800">Guest Check Out</h1>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Guest DataTables</h6>
             </div>
-
-            <!-- Visitor This Month -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitors (This Month)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">200</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Name</th>
+                      <th>Phone Number</th>
+                      <th>Whom To See</th>
+                      <th>Purpose Of Visit</th>
+                      <th>Date</th>
+                      <th>Time In</th>
+                      <th>Time Out</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>0000000000</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>0000000000</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
+                    <tr>
+                      <td>Ashton Cox</td>
+                      <td>0000000000</td>
+                      <td>Junior Technical Author</td>
+                      <td>San Francisco</td>
+                      <td>66</td>
+                      <td>2009/01/12</td>
+                      <td>$86,000</td>
+                    </tr>
+                    <tr>
+                      <td>Shad Decker</td>
+                      <td>0000000000</td>
+                      <td>Edinburgh</td>
+                      <td>System Architect</td>
+                      <td>51</td>
+                      <td>2008/11/13</td>
+                      <td>$183,000</td>
+                    </tr>
+                    <tr>
+                      <td>Michael Bruce</td>
+                      <td>0000000000</td>
+                      <td>System Architect</td>
+                      <td>Singapore</td>
+                      <td>29</td>
+                      <td>2011/06/27</td>
+                      <td>$183,000</td>
+                    </tr>
+                    <tr>
+                      <td>Donna Snider</td>
+                      <td>0000000000</td>
+                      <td>System Architect</td>
+                      <td>New York</td>
+                      <td>27</td>
+                      <td>2011/01/25</td>
+                      <td>$112,000</td>
+                    </tr>
+                    </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -210,7 +224,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>
