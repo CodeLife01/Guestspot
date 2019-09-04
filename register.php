@@ -1,4 +1,43 @@
 <?php
+session_start();
+$errors = array(); 
+// connect to the database
+require 'connect.inc.php';
+
+if(isset($_POST['submit'])){
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $whomtosee = $_POST['whomtosee'];
+  $phone = $_POST['phone'];
+  $addr = $_POST['addr'];
+  $pp = $_POST['pp'];
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($fname)) { array_push($errors, "First Name is required"); }
+  if (empty($lname)) { array_push($errors, "Last Name is required"); }
+  if (empty($phone)) { array_push($errors, "phone Number is required"); }
+  if (empty($whomtosee)) { array_push($errors, "Whom to see is required"); }
+  if (empty($addr)) { array_push($errors, "Address is required"); }
+  if (empty($pp)) { array_push($errors, "Purpose of visit is required"); }
+  if ($whomtosee == 'choose...') {
+	array_push($errors, "Whom to see is required");
+  }
+  if (count($errors) == 0) {
+    $query = "INSERT INTO `guest_info` VALUES (NULL, '$fname', '$lname', '$phone', '$whomtosee', '$addr', '$pp', current_timestamp(), current_timestamp())";
+    $result = mysqli_query($db, $query);
+    //
+    if(!$result){
+      die("OOPPS! query failed".mysqli_error($db)); 
+  }else{
+    
+    $message = "Successful";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+}
+
+}
+
 
 
 
@@ -59,6 +98,14 @@
           <span>Register Guest</span></a>
       </li>
       <hr class="sidebar-divider my-0">
+      <!-- Nav Item - Guest Check Out -->
+      <li class="nav-item active">
+        <a class="nav-link" href="checkout.php">
+          <i class="fas fa-check-square"></i>
+          <span>Guest Check Out</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
+
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
@@ -66,14 +113,7 @@
           <span>Guest Report</span></a>
       </li>
       <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Guest Check Out -->
-      <li class="nav-item active">
-        <a class="nav-link" href="checkout.php">
-          <i class="fas fa-flag-checkered"></i>
-          <span>Guest Check Out</span></a>
-      </li>
-      <hr class="sidebar-divider my-0">
-
+      
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         
@@ -131,26 +171,26 @@
 
           <!-- Content Row -->
           <div class="align-items-center">
-         <form>
+         <form method="POST" action="register.php">
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="inlineFormInputName">First Name</label>
-                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Enter First Name...">
+                <input type="text" name="fname" class="form-control" id="inlineFormInputName" placeholder="Enter First Name..." required> 
                 </div>
                 <div class="form-group col-md-6">
                 <label for="inlineFormInputName">Last Name</label>
-                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Enter Last Name...">
+                <input type="text" name="lname" class="form-control" id="inlineFormInputName" placeholder="Enter Last Name..." required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="inlineFormInputNumber">Phone Number</label>
-                <input type="number" class="form-control" id="inlineFormInputNumber" placeholder="Enter Number...">
+                <input type="number" name="phone" class="form-control" id="inlineFormInputNumber" placeholder="Enter Number..." required>
                 </div>
                 <div class="form-group col-md-6">
                 <label for="inlineFormInputState">Whom To See</label>
-                <select id="inlineForminputState" class="form-control">
-                    <option selected>Choose...</option>
+                <select id="inlineForminputState" class="form-control" name="whomtosee" required>
+                    <option selected></option>
                     <option>Manager</option>
                     <option>V.Manager</option>
                     <option>Customer Care</option>
@@ -159,14 +199,20 @@
                 </select>
                 </div>
                <div class="form-group col-md-10">
-                    <label>Purpose Of Visit</label>
-                    <textarea class="form-control" rows="2"></textarea>
+                    <label >Address</label>
+                    <textarea class="form-control" rows="2" name="addr" required></textarea>
                 </div>
+
+                <div class="form-group col-md-10">
+                    <label>Purpose Of Visit</label>
+                    <textarea class="form-control" rows="2" name="pp" required></textarea>
+                </div>
+                </div>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          </div>
             
         </form> 
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
+        
 
               
 

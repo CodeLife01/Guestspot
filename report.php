@@ -1,5 +1,12 @@
 <?php
+require 'connect.inc.php';
 
+try {
+  $sql = "SELECT * FROM guest_record";
+  $result = $db->query($sql);
+} catch(PDOException $error) {
+  echo $sql . "<br>" . $error->getMessage();
+}
 
 
 ?>
@@ -58,6 +65,14 @@
           <span>Register Guest</span></a>
       </li>
       <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Guest Check Out -->
+      <li class="nav-item active">
+        <a class="nav-link" href="checkout.php">
+          <i class="fas fa-check-square"></i>
+          <span>Guest Check Out</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
@@ -65,13 +80,7 @@
           <span>Guest Report</span></a>
       </li>
       <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Guest Check Out -->
-      <li class="nav-item active">
-        <a class="nav-link" href="checkout.php">
-          <i class="fas fa-flag-checkered"></i>
-          <span>Guest Check Out</span></a>
-      </li>
-      <hr class="sidebar-divider my-0">
+
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -135,71 +144,33 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead class="thead-dark">
                     <tr>
-                      <th>Name</th>
+                      <th>ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                       <th>Phone Number</th>
                       <th>Whom To See</th>
-                      <th>Purpose Of Visit</th>
-                      <th>Date</th>
                       <th>Time In</th>
                       <th>Time Out</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   
                   <tbody>
+                  <?php 
+                    while($row = $result->fetch_assoc()){
+                    ?>
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>0000000000</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
+                    <td><?php echo ($row["id"]); ?></td>
+                    <td><?php echo ($row["firstName"]); ?></td>
+                    <td><?php echo ($row["lastName"]); ?></td>
+                    <td><?php echo ($row["phoneNumber"]); ?></td>
+                    <td><?php echo ($row["whomtosee"]); ?></td>
+                    <td><?php echo ($row["time_in"]); ?></td>
+                    <td><?php echo ($row["time_out"]); ?></td>
+
+                    <td><a href="checkout.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">More Details</button></a></td>
                     </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>0000000000</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>0000000000</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>
-                    <tr>
-                      <td>Shad Decker</td>
-                      <td>0000000000</td>
-                      <td>Edinburgh</td>
-                      <td>System Architect</td>
-                      <td>51</td>
-                      <td>2008/11/13</td>
-                      <td>$183,000</td>
-                    </tr>
-                    <tr>
-                      <td>Michael Bruce</td>
-                      <td>0000000000</td>
-                      <td>System Architect</td>
-                      <td>Singapore</td>
-                      <td>29</td>
-                      <td>2011/06/27</td>
-                      <td>$183,000</td>
-                    </tr>
-                    <tr>
-                      <td>Donna Snider</td>
-                      <td>0000000000</td>
-                      <td>System Architect</td>
-                      <td>New York</td>
-                      <td>27</td>
-                      <td>2011/01/25</td>
-                      <td>$112,000</td>
-                    </tr>
+                    <?php } ?>
                     </tbody>
                 </table>
               </div>

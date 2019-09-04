@@ -78,18 +78,19 @@ if(isset($_SESSION['verified'])) {
           <span>Register Guest</span></a>
       </li>
       <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Guest Check Out -->
+      <li class="nav-item active">
+        <a class="nav-link" href="report.php">
+          <i class="fas fa-check-square"></i>
+          <span>Guest Check Out</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
-      </li>
-      <hr class="sidebar-divider my-0">
-        <!-- Nav Item - Guest Check Out -->
-      <li class="nav-item active">
-        <a class="nav-link" href="report.php">
-          <i class="fas fa-check-square"></i>
-          <span>Guest Check Out</span></a>
       </li>
       <hr class="sidebar-divider my-0">
    
