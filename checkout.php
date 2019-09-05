@@ -56,7 +56,7 @@ if (isset($_GET["id"])) {
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>GuestSpot</title>
+  <title>UBA SAMARU</title>
 <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   
@@ -78,7 +78,7 @@ if (isset($_GET["id"])) {
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">GuestSpot</div>
+        <div class="sidebar-brand-text mx-3">UBA SAMARU</div>
       </a>
 
       <!-- Divider -->
