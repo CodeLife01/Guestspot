@@ -1,50 +1,19 @@
 <?php
+
 require 'connect.inc.php';
 
 if (isset($_GET["id"])) {
     try {
       $id = $_GET["id"];
-      $sq = "UPDATE guest_info SET time_out = current_timestamp() WHERE id= $id";
-      $query = "INSERT INTO `guest_record` (`id`, `firstName`, `lastName`, `phoneNumber`, `whomtosee`, `address`, `purpose`, `time_in`, `time_out`)
-       SELECT * FROM guest_info WHERE id = $id";
-      // prepare query for execution
-    
-      if ($db->query($sq) === TRUE) {
-      if ($db->query($query) === TRUE) {
-         $sql = "DELETE FROM guest_info WHERE id = $id";
-     
-         if ($db->query($sql) === TRUE) {
-           echo "<div class='alert alert-success alert-dismissible'>
-           <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-           <strong>Guest Check Out Succesful</strong> Indicates a successful or positive action.
-         </div>";
-       } else {
-           echo "<div class='alert alert-danger'>Unable to Check-Out Guest. Please try again.</div>" . $db->error;
-           
-       }
-       }else{
-           echo "<div class='alert alert-danger'>Unable to Check-Out Guest. Please try again.</div>" . $db->error;
-       }
-      }else{
-        echo 'NOT OK..';
+      $sql = "SELECT * FROM guest_record WHERE id = $id";
+      $result = $db->query($sql);
+    }catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
       }
-       } catch(PDOException $error) {
-         echo $sql . "<br>" . $error->getMessage();
-       }
-     }
-     
-     try {
-       $sql = "SELECT * FROM guest_info";
-       $result = $db->query($sql);
-     } catch(PDOException $error) {
-       echo $sql . "<br>" . $error->getMessage();
-     }
-   
-  
+    }else{
+        echo 'NOT OK...';
+    }
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,43 +134,59 @@ if (isset($_GET["id"])) {
        <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Guest Check Out</h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Guest DataTables</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Guest Detail</h6>
             </div>
             <div class="card-body">
-            
-              <div class="table-responsive">
+              <div class="table-responsive"> 
                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Phone Number</th>
-                      <th>Whom To See</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  
-                  <tbody>
-                  <?php 
+                <?php 
                     while($row = $result->fetch_assoc()){
                     ?>
-                    <tr>
-                    <td><?php echo ($row["id"]); ?></td>
-                    <td><?php echo ($row["firstName"]); ?></td>
-                    <td><?php echo ($row["lastName"]); ?></td>
-                    <td><?php echo ($row["phoneNumber"]); ?></td>
-                    <td><?php echo ($row["whomtosee"]); ?></td>
-                    <td><a href="checkout.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">Check Out</button></a></td>
-                    </tr>
-                    <?php } ?>
-                    </tbody>
+                <tr>
+        <td>ID</td>
+        <td><?php echo ($row["id"]); ?></td>
+         </tr>
+       <tr>
+        <td>First Name</td>
+        <td><?php echo ($row["firstName"]); ?></td>
+        </tr>
+        <tr>
+        <td>Last Name</td>
+        <td><?php echo ($row["lastName"]); ?></td>
+        </tr>
+        <tr>
+        <td>Phone Number</td>
+        <td><?php echo ($row["phoneNumber"]); ?></td>
+        </tr>
+        <tr>
+        <td>Whom To See</td>
+        <td><?php echo ($row["whomtosee"]); ?></td>
+        </tr>
+        <tr>
+        <td>Address</td>
+        <td><?php echo ($row["address"]); ?></td>
+        </tr>
+        <td>Purpose Of Visiting</td>
+        <td><?php echo ($row["purpose"]); ?></td>
+        </tr>
+        <td>Time-In</td>
+        <td><?php echo ($row["time_in"]); ?></td>
+        </tr>
+        <td>Time=Out</td>
+        <td><?php echo ($row["time_out"]); ?></td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>
+            <a href='report.php' class='btn btn-danger'>Back to Guest Records</a>
+        </td>
+        </tr>
+        <?php } ?>
                 </table>
+              
               </div>
             </div>
           </div>

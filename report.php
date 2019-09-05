@@ -1,13 +1,41 @@
 <?php
 require 'connect.inc.php';
 
-try {
+/*try {
   $sql = "SELECT * FROM guest_record";
   $result = $db->query($sql);
 } catch(PDOException $error) {
   echo $sql . "<br>" . $error->getMessage();
 }
 
+*/
+
+if (isset($_GET['page_no']) && $_GET['page_no']!="") {
+  $page_no = $_GET['page_no'];
+  } else {
+      $page_no = 1;
+      }
+      $total_records_per_page = 5;
+
+$offset = ($page_no-1) * $total_records_per_page;
+$previous_page = $page_no - 1;
+$next_page = $page_no + 1;
+$adjacents = "2";
+
+$result_count = mysqli_query(
+  $db,
+  "SELECT COUNT(*) As total_records FROM `guest_record`"
+  );
+  $total_records = mysqli_fetch_array($result_count);
+  $total_records = $total_records['total_records'];
+  $total_no_of_pages = ceil($total_records / $total_records_per_page);
+  $second_last = $total_no_of_pages - 1; // total pages minus 1
+
+
+  $result = mysqli_query(
+    $db,
+    "SELECT * FROM `guest_record` LIMIT $offset, $total_records_per_page"
+    );
 
 ?>
 
@@ -132,8 +160,7 @@ try {
        <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Guest Report</h1>
+        
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -157,7 +184,7 @@ try {
                   
                   <tbody>
                   <?php 
-                    while($row = $result->fetch_assoc()){
+                    while($row = mysqli_fetch_array($result)){
                     ?>
                     <tr>
                     <td><?php echo ($row["id"]); ?></td>
@@ -168,12 +195,38 @@ try {
                     <td><?php echo ($row["time_in"]); ?></td>
                     <td><?php echo ($row["time_out"]); ?></td>
 
-                    <td><a href="checkout.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">More Details</button></a></td>
+                    <td><a href="more_details.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">More Details</button></a></td>
                     </tr>
                     <?php } ?>
                     </tbody>
                 </table>
               </div>
+              <div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;'>
+              <strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
+              </div>
+              <ul class="pagination">
+              <?php if($page_no > 1){
+              echo "<li><a href='?page_no=1'>First Page</a></li>";
+              } ?>
+                  
+              <li <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>&nbsp;
+              <a <?php if($page_no > 1){
+              echo "href='?page_no=$previous_page'";
+              } ?>>Previous</a>
+              </li>
+              &nbsp;
+              <li <?php if($page_no >= $total_no_of_pages){
+              echo "class='disabled'";
+              } ?>>&nbsp;
+              <a <?php if($page_no < $total_no_of_pages) {
+              echo "href='?page_no=$next_page'";
+              } ?> &nbsp;>Next</a>&nbsp;
+              </li>&nbsp;
+              
+              <?php if($page_no < $total_no_of_pages){
+              echo "<li><a href='?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
+              } ?>
+              </ul>
             </div>
           </div>
 
