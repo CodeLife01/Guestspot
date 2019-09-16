@@ -30,16 +30,14 @@ if(isset($_POST['submit'])){
     if(!$result){
       die("OOPPS! query failed".mysqli_error($db)); 
   }else{
-    
-    $message = "Successful";
-    echo "<script type='text/javascript'>alert('$message');</script>";
+    echo "<div class='alert alert-success alert-dismissible'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+    <strong>Guest Check Out Succesful</strong>
+  </div>";
   }
 }
 
 }
-
-
-
 
 ?>
 
@@ -59,7 +57,8 @@ if(isset($_POST['submit'])){
   <title>UBA SAMARU</title>
 <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+   <!-- Custom style for url -- adding icon-->
+   <link rel="shortcut icon" type="image/x-icon" href="image/ub.png">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -71,7 +70,7 @@ if(isset($_POST['submit'])){
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#d51709;">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -90,29 +89,28 @@ if(isset($_POST['submit'])){
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
        <!-- Nav Item - Register Guest -->
       <li class="nav-item active">
         <a class="nav-link" href="register.php">
           <i class="fas fa-registered"></i>
           <span>Register Guest</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
       <!-- Nav Item - Guest Check Out -->
       <li class="nav-item active">
         <a class="nav-link" href="checkout.php">
           <i class="fas fa-check-square"></i>
           <span>Guest Check Out</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
-
+      <hr class="sidebar-divider my-0" style="background-color:white;">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
       
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -144,13 +142,13 @@ if(isset($_POST['submit'])){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <img class="img-profile rounded-circle" src="image/pp.jpeg">
+                <span class="mr-2 d-none d-lg-inline small" style="color:#d51709;">Admin</span>
+                <img class="img-profile rounded-circle" src="image/ub.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2" style="color:#d51709;"></i>
                   Logout
                 </a>
               </div>
@@ -166,7 +164,7 @@ if(isset($_POST['submit'])){
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Register Guest</h1>
+            <h1 class="h3 mb-0" style="color:#d51709;">Register Guest</h1>
           </div>
 
           <!-- Content Row -->
@@ -174,21 +172,21 @@ if(isset($_POST['submit'])){
          <form method="POST" action="register.php">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <label for="inlineFormInputName">First Name</label>
+                <label style="color:#d51709;">First Name</label>
                 <input type="text" name="fname" class="form-control" id="inlineFormInputName" placeholder="Enter First Name..." required> 
                 </div>
                 <div class="form-group col-md-6">
-                <label for="inlineFormInputName">Last Name</label>
+                <label style="color:#d51709;">Last Name</label>
                 <input type="text" name="lname" class="form-control" id="inlineFormInputName" placeholder="Enter Last Name..." required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                <label for="inlineFormInputNumber">Phone Number</label>
+                <label style="color:#d51709;">Phone Number</label>
                 <input type="number" name="phone" class="form-control" id="inlineFormInputNumber" placeholder="Enter Number..." required>
                 </div>
                 <div class="form-group col-md-6">
-                <label for="inlineFormInputState">Whom To See</label>
+                <label style="color:#d51709;">Whom To See</label>
                 <select id="inlineForminputState" class="form-control" name="whomtosee" required>
                     <option selected></option>
                     <option>Manager</option>
@@ -199,16 +197,16 @@ if(isset($_POST['submit'])){
                 </select>
                 </div>
                <div class="form-group col-md-10">
-                    <label >Address</label>
+                    <label style="color:#d51709;" >Address</label>
                     <textarea class="form-control" rows="2" name="addr" required></textarea>
                 </div>
 
                 <div class="form-group col-md-10">
-                    <label>Purpose Of Visit</label>
+                    <label style="color:#d51709;">Purpose Of Visit</label>
                     <textarea class="form-control" rows="2" name="pp" required></textarea>
                 </div>
                 </div>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-outline-danger">Submit</button>
           </div>
             
         </form> 
@@ -228,8 +226,8 @@ if(isset($_POST['submit'])){
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-outline-danger" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

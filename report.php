@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'connect.inc.php';
 
 /*try {
@@ -54,7 +55,8 @@ $result_count = mysqli_query(
   <title>UBA SAMARU</title>
 <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+  <!-- Custom style for url -- adding icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="image/ub.png">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -66,7 +68,7 @@ $result_count = mysqli_query(
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#d51709;">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -85,14 +87,14 @@ $result_count = mysqli_query(
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
        <!-- Nav Item - Register Guest -->
       <li class="nav-item active">
         <a class="nav-link" href="register.php">
           <i class="fas fa-registered"></i>
           <span>Register Guest</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
 
       <!-- Nav Item - Guest Check Out -->
       <li class="nav-item active">
@@ -100,14 +102,14 @@ $result_count = mysqli_query(
           <i class="fas fa-check-square"></i>
           <span>Guest Check Out</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
 
 
       <!-- Sidebar Toggler (Sidebar) -->
@@ -140,13 +142,13 @@ $result_count = mysqli_query(
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <img class="img-profile rounded-circle" src="image/pp.jpeg">
+                <span class="mr-2 d-none d-lg-inline small" style="color:#d51709;">Admin</span>
+                <img class="img-profile rounded-circle" src="image/ub.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2" style="color:#d51709;"></i>
                   Logout
                 </a>
               </div>
@@ -164,11 +166,11 @@ $result_count = mysqli_query(
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Guest DataTables</h6>
+              <h6 class="m-0 font-weight-bold " style="color:#d51709;">GUEST RECORD TABLE</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0" style="color:#d51709;" >
                   <thead class="thead-dark">
                     <tr>
                       <th>ID</th>
@@ -195,22 +197,22 @@ $result_count = mysqli_query(
                     <td><?php echo ($row["time_in"]); ?></td>
                     <td><?php echo ($row["time_out"]); ?></td>
 
-                    <td><a href="more_details.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">More Details</button></a></td>
+                    <td><a href="more_details.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-outline-danger">More Details</button></a></td>
                     </tr>
                     <?php } ?>
                     </tbody>
                 </table>
               </div>
-              <div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;'>
+              <div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;color:#d51709;'>
               <strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
               </div>
-              <ul class="pagination">
+              <ul class="pagination" style="color:#d51709;">
               <?php if($page_no > 1){
-              echo "<li><a href='?page_no=1'>First Page</a></li>";
+              echo "<li ><a href='?page_no=1'>First Page</a></li>";
               } ?>
                   
               <li <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>&nbsp;
-              <a <?php if($page_no > 1){
+              <a style="color:#d51709;" <?php if($page_no > 1){
               echo "href='?page_no=$previous_page'";
               } ?>>Previous</a>
               </li>
@@ -218,13 +220,13 @@ $result_count = mysqli_query(
               <li <?php if($page_no >= $total_no_of_pages){
               echo "class='disabled'";
               } ?>>&nbsp;
-              <a <?php if($page_no < $total_no_of_pages) {
+              <a style="color:#d51709;"<?php if($page_no < $total_no_of_pages) {
               echo "href='?page_no=$next_page'";
               } ?> &nbsp;>Next</a>&nbsp;
               </li>&nbsp;
               
               <?php if($page_no < $total_no_of_pages){
-              echo "<li><a href='?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
+              echo "<li><a style='color:#d51709;' href='?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
               } ?>
               </ul>
             </div>
@@ -237,15 +239,15 @@ $result_count = mysqli_query(
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" >Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-outline-danger" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

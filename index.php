@@ -49,7 +49,8 @@ require 'connect.inc.php';
   <title>UBA SAMARU</title>
 <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+  <!-- Custom style for url -- adding icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="image/ub.png">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -61,7 +62,7 @@ require 'connect.inc.php';
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#d51709;">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -80,14 +81,14 @@ require 'connect.inc.php';
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
        <!-- Nav Item - Register Guest -->
       <li class="nav-item active">
         <a class="nav-link" href="register.php">
           <i class="fas fa-registered"></i>
           <span>Register Guest</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
 
       <!-- Nav Item - Guest Check Out -->
       <li class="nav-item active">
@@ -95,14 +96,14 @@ require 'connect.inc.php';
           <i class="fas fa-check-square"></i>
           <span>Guest Check Out</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
         <a class="nav-link" href="report.php">
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
    
 
          <!-- Sidebar Toggler (Sidebar) -->
@@ -135,13 +136,13 @@ require 'connect.inc.php';
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <img class="img-profile rounded-circle" src="image/pp.jpeg">
+                <span class="mr-2 d-none d-lg-inline small" style="color:#d51709;">Admin</span>
+                <img class="img-profile rounded-circle" src="image/ub.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2" style="color:#d51709;"></i>
                   Logout
                 </a>
               </div>
@@ -157,7 +158,7 @@ require 'connect.inc.php';
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0" style="color:#d51709;">Dashboard</h1>
           </div>
 
           <!-- Content Row -->
@@ -165,12 +166,12 @@ require 'connect.inc.php';
 
             <!-- Current Visitors -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Current Visitors</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rows;?></div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1"style="color:#d51709;">Current Visitors</div>
+                      <div class="h5 mb-0 font-weight-bold" style="color:#d51709;"><?php echo $rows;?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -182,12 +183,12 @@ require 'connect.inc.php';
 
             <!-- Visitor This Month -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitors (This Month)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rows1;?></div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1"style="color:#d51709;">Visitors (This Month)</div>
+                      <div class="h5 mb-0 font-weight-bold "style="color:#d51709;"><?php echo $rows1;?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -197,20 +198,20 @@ require 'connect.inc.php';
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Total Guest Report Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Guest Report</div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1"style="color:#d51709;">Total Guest Report</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $rows1;?></div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold"style="color:#d51709;"><?php echo $rows1;?></div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -223,14 +224,14 @@ require 'connect.inc.php';
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
+            <!-- Active Operator Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Active Operator</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $rows2;?></div>
+                      <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:#d51709;">Active Operator</div>
+                      <div class="h5 mb-0 font-weight-bold "style="color:#d51709;"><?php echo $rows2;?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -255,15 +256,15 @@ require 'connect.inc.php';
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-outline-danger" href="logout.php">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
+ <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

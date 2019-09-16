@@ -56,16 +56,17 @@ if(!empty($_POST['login'])) {
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <!-- Custom style for url -- adding icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="image/ub.png">
 </head>
 
-<body class="bg-gradient-primary">
+<body style=background-image:url("image/ubob.jpg"); >
   <div class="container">
   
 
@@ -91,7 +92,7 @@ if(!empty($_POST['login'])) {
                     <div class="form-group">
                       <input type="password" name = "password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Enter Password" required>
                     </div>
-                    <input type="submit" name="login" value="Login" class="btn btn-primary btn-user btn-block">
+                    <input type="submit" name="login" value="Login" class="btn btn-outline-danger btn-user btn-block">
                     
                   </form>
                      <?php if(count($notifications) > 0) : ?>

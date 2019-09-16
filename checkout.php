@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'connect.inc.php';
 
 if (isset($_GET["id"])) {
@@ -16,7 +17,7 @@ if (isset($_GET["id"])) {
          if ($db->query($sql) === TRUE) {
            echo "<div class='alert alert-success alert-dismissible'>
            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-           <strong>Guest Check Out Succesful</strong> Indicates a successful or positive action.
+           <strong>Guest Check Out Succesful</strong>
          </div>";
        } else {
            echo "<div class='alert alert-danger'>Unable to Check-Out Guest. Please try again.</div>" . $db->error;
@@ -59,7 +60,8 @@ if (isset($_GET["id"])) {
   <title>UBA SAMARU</title>
 <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  
+  <!-- Custom style for url -- adding icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="image/ub.png">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -71,7 +73,7 @@ if (isset($_GET["id"])) {
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"  style="background-color:#d51709;">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -90,21 +92,21 @@ if (isset($_GET["id"])) {
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
        <!-- Nav Item - Register Guest -->
       <li class="nav-item active">
         <a class="nav-link" href="register.php">
           <i class="fas fa-registered"></i>
           <span>Register Guest</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
         <!-- Nav Item - Guest Check Out -->
       <li class="nav-item active">
         <a class="nav-link" href="checkout.php">
           <i class="fas fa-check-square"></i>
           <span>Guest Check Out</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
 
       <!-- Nav Item - Guest Report -->
       <li class="nav-item active">
@@ -112,7 +114,7 @@ if (isset($_GET["id"])) {
           <i class="fas fa-flag-checkered"></i>
           <span>Guest Report</span></a>
       </li>
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider my-0" style="background-color:white;">
 
 
       <!-- Sidebar Toggler (Sidebar) -->
@@ -145,13 +147,13 @@ if (isset($_GET["id"])) {
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                <img class="img-profile rounded-circle" src="image/pp.jpeg">
+                <span class="mr-2 d-none d-lg-inline " style="color:#d51709;">Admin</span>
+                <img class="img-profile rounded-circle" src="image/ub.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2" style="color:#d51709;"></i>
                   Logout
                 </a>
               </div>
@@ -166,16 +168,16 @@ if (isset($_GET["id"])) {
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Guest Check Out</h1>
+          <h1 class="h3 mb-2 " style="color:#d51709;">Guest Check Out</h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Guest DataTables</h6>
+              <h6 class="m-0 font-weight-bold" style="color:#d51709;">Guest DataTables</h6>
             </div>
             <div class="card-body">
             
               <div class="table-responsive">
-                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0" style="color:#d51709;">
                   <thead class="thead-dark">
                     <tr>
                       <th>#</th>
@@ -197,7 +199,7 @@ if (isset($_GET["id"])) {
                     <td><?php echo ($row["lastName"]); ?></td>
                     <td><?php echo ($row["phoneNumber"]); ?></td>
                     <td><?php echo ($row["whomtosee"]); ?></td>
-                    <td><a href="checkout.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-success">Check Out</button></a></td>
+                    <td><a href="checkout.php?id=<?php echo ($row["id"]); ?>"><button type="button" class="btn btn-outline-danger">Check Out</button></a></td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -220,8 +222,8 @@ if (isset($_GET["id"])) {
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-outline-danger" href="logout.php">Logout</a>
         </div>
       </div>
     </div>
